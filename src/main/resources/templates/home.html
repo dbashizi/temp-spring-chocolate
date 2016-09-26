@@ -1,18 +1,41 @@
-<html>
+<html ng-app="TIYChocolateApp">
+
+<!--
+{{! changing the mustache delimiter so it doesn't conflict with  }}
+{{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
+{{=<% %>=}}
+-->
+
 <head>
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <script src="../static/js/choc-controller.js"></script>
+    <script src="js/choc-controller.js"></script>
 </head>
-<body>
+<body ng-controller="TIYChocolateController">
 
-Welcome to my Chocolate Factory!
-
-<br><br>
-
-Ooops, factory isn't operational (yet!)
+Welcome to my Chocolate Factory! <br/>
+{{testVar}}
 
 <br><br>
 
-<div class="choc-big-bar"></div>
+tell me how many big bars of chocolate you have? <br/>
+
+<input type="text" ng-model="numBigs"/>
+
+<br/>
+
+{{numBigs}}
+
+<br><br>
+
+<div ng-repeat="chocIndex in makeArray(numBigs)">
+    <div class="choc-big-bar">{{chocIndex + 1}}</div>
+</div>
 
 </body>
 </html>
